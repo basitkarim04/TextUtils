@@ -55,8 +55,15 @@ function Textbox(props) {
     // console.log("DownCase was Clicked" + text);
     let newText = text.toLowerCase();
     setText(newText);
-
   }
+
+  const handleCamelCase = () => {
+    // console.log("DownCase was Clicked" + text);
+    let newText = text.replace(/([a-z])([A-Z])/g, '$1 $2');
+    setText(newText);
+  }
+  
+
   const handlleclearClick = () => {
     let newText = " ";
     setText(newText);
@@ -73,6 +80,8 @@ function Textbox(props) {
         .catch(err => {
             console.error('Failed to copy text: ', err);
         });
+
+
 };
 
 
@@ -87,6 +96,7 @@ function Textbox(props) {
      <button className="btn btn-primary mx-1"  onClick={handlleUpClick} > Convert to UpperCase</button>
      <button  className="btn btn-primary mx-1" onClick={handlledownClick} > Convert to LowerCase</button>
      <button  className="btn btn-primary mx-1" onClick={handlleclearClick} > Clear Text</button>
+     <button  className="btn btn-primary mx-1" onClick={handleCamelCase} > Clear Text</button>
      <button  className="btn btn-primary mx-1" onClick={handleCopyClick} > Copy Text</button>
      <p className={copyMessage ? 'showMessage' : 'hideMessage'}>{copyMessage}</p>
      </div>
@@ -116,4 +126,3 @@ function exporting(props){
   )
 }
 export default exporting;
-
